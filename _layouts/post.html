@@ -1,0 +1,15 @@
+---
+layout: default
+---
+{% capture link_cats%}
+  {% for cat in page.categories offset:1 %}{{ cat | upcase }}{% endfor %}
+{% endcapture %}
+{% capture link_tags%}
+  {% for tag in page.tags %}{{ tag | capitalize }}{% unless forloop.last %}, {% endunless %}{% endfor %}
+{% endcapture %}
+<h2>{{ page.title }}</h2>
+<p class="meta">{{ page.date | date_to_string }} | {{ link_cats }} | {{ link_tags }}</p>
+
+<div class="post">
+{{ content }}
+</div>
